@@ -1,5 +1,11 @@
 # Change Log
 
+## vNext
+* Updated to Monaco Editor v0.49.0
+* Added support for disabling Word Based Suggestions
+* Implemented Async support for provideCompletionItems of CompletionItemProvider
+* Added support for RegisterDocumentFormattingEditProvider
+
 ## 3.2.0
 * Updated to Monaco Editor v0.46.0
 * Added support for net8.0
