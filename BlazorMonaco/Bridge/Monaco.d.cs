@@ -1417,7 +1417,7 @@ namespace BlazorMonaco.Editor
          * Controls whether completions should be computed based on words in the document.
          * Defaults to true.
          */
-        bool? WordBasedSuggestions { get; set; } // TODO wordBasedSuggestions?: 'off' | 'currentDocument' | 'matchingDocuments' | 'allDocuments';
+        string WordBasedSuggestions { get; set; }
         /**
          * Controls whether word based completions should be included from opened documents of the same language or any language.
          */
@@ -1463,7 +1463,7 @@ namespace BlazorMonaco.Editor
         public bool? DetectIndentation { get; set; }
         public bool? TrimAutoWhitespace { get; set; }
         public bool? LargeFileOptimizations { get; set; }
-        public bool? WordBasedSuggestions { get; set; }
+        public string WordBasedSuggestions { get; set; }
         public bool? WordBasedSuggestionsOnlySameLanguage { get; set; }
         public bool? StablePeek { get; set; }
         public int? MaxTokenizationLineLength { get; set; }
@@ -1523,7 +1523,7 @@ namespace BlazorMonaco.Editor
         public bool? DetectIndentation { get; set; }
         public bool? TrimAutoWhitespace { get; set; }
         public bool? LargeFileOptimizations { get; set; }
-        public bool? WordBasedSuggestions { get; set; }
+        public string WordBasedSuggestions { get; set; }
         public bool? WordBasedSuggestionsOnlySameLanguage { get; set; }
         public bool? StablePeek { get; set; }
         public int? MaxTokenizationLineLength { get; set; }
@@ -7427,10 +7427,10 @@ namespace BlazorMonaco.Languages
         /**
          * Provide completion items for the given position and document.
          */
-        public delegate CompletionList ProvideCompletionItemsDelegate(string modelUri, Position position, CompletionContext context);
+        public delegate Task<CompletionList> ProvideCompletionItemsDelegate(string modelUri, Position position, CompletionContext context);
         public ProvideCompletionItemsDelegate ProvideCompletionItemsFunc { get; set; }
         [JSInvokable]
-        public CompletionList ProvideCompletionItems(string modelUri, Position position, CompletionContext context) => ProvideCompletionItemsFunc.Invoke(modelUri, position, context);
+        public async Task<CompletionList> ProvideCompletionItems(string modelUri, Position position, CompletionContext context) => await ProvideCompletionItemsFunc.Invoke(modelUri, position, context);
 
         /**
          * Given a completion item fill in more data, like {@link CompletionItem.documentation doc-comment}
