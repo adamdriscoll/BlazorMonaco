@@ -5,6 +5,7 @@
 * Added support for disabling Word Based Suggestions
 * Implemented Async support for provideCompletionItems of CompletionItemProvider
 * Added support for RegisterDocumentFormattingEditProvider
+* Changed behavior of overwriting options' value when recreating editor with the same ID - now options will be overwritten only if they do not specify value already.
 
 ## 3.2.0
 * Updated to Monaco Editor v0.46.0
