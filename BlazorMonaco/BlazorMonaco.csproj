@@ -15,6 +15,7 @@
 https://github.com/serdarciplak/BlazorMonaco/blob/master/CHANGELOG.md</PackageReleaseNotes>
     <PackageIcon>icon.png</PackageIcon>
     <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
   </PropertyGroup>
 
   <ItemGroup Condition="$(TargetFramework.StartsWith('netstandard'))">
@@ -39,7 +40,7 @@ https://github.com/serdarciplak/BlazorMonaco/blob/master/CHANGELOG.md</PackageRe
 
   <ItemGroup Condition="$(TargetFramework.StartsWith('net8'))">
     <PackageReference Include="Microsoft.AspNetCore.Components" Version="8.0.0" />
-	<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="8.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="8.0.0" />
   </ItemGroup>
 
   <ItemGroup>
