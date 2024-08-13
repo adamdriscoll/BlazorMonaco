@@ -1,0 +1,19 @@
+name: Nupkg
+on: [workflow_dispatch]
+
+jobs:
+    build:
+      name: Package
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v3
+          with:
+            fetch-depth: 0
+        - uses: actions/setup-dotnet@v4
+          with:
+            dotnet-version: '8.x'
+        - run: dotnet pack -c Release -o ./publish
+        - uses: actions/upload-artifact@v2
+          with:
+            name: nupkg
+            path: ./publish/*.nupkg

@@ -199,8 +199,10 @@
     private async Task RegisterCompletionItemProvider()
     {
         // Register completion item to replace warning item
-        await BlazorMonaco.Languages.Global.RegisterCompletionItemProvider(jsRuntime, "javascript", (modelUri, position, context) =>
+        await BlazorMonaco.Languages.Global.RegisterCompletionItemProvider(jsRuntime, "javascript", async (modelUri, position, context) =>
         {
+            await Task.CompletedTask;
+             
             var completionList = new CompletionList()
             {
                 Suggestions = new List<CompletionItem>
