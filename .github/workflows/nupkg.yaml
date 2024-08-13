@@ -17,3 +17,9 @@ jobs:
           with:
             name: nupkg
             path: ./publish/*.nupkg
+        - uses: tanaka-takayoshi/nuget-publish-to-github-packages-action@v2.1
+          with:
+            nupkg-path:  './publish/*.nupkg'
+            repo-owner:  'adamdriscoll'
+            gh-user:  'adamdriscoll'
+            token:  ${{ secrets.GITHUB_TOKEN }}
